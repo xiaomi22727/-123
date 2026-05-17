@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>车泡泡自助洗车机 — 全国招商加盟</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,6 +12,7 @@
     background: #0a0a14;
     color: #fff;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
 
   /* ===== SLIDE WRAPPER ===== */
@@ -25,6 +26,39 @@
     padding: 60px 80px;
     position: relative;
     overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .slide { padding: 40px 24px; }
+    .cover-title { font-size: 42px !important; }
+    .slide-heading { font-size: 28px !important; }
+    .stats-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .pain-grid { grid-template-columns: 1fr !important; }
+    .products-grid { grid-template-columns: 1fr !important; }
+    .adv-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .invest-grid { grid-template-columns: 1fr !important; }
+    .profit-layout { grid-template-columns: 1fr !important; }
+    .cases-grid { grid-template-columns: 1fr !important; }
+    .contact-layout { grid-template-columns: 1fr !important; }
+    .solution-layout { flex-direction: column !important; }
+    .support-layout { grid-template-columns: 1fr !important; }
+    .cover-badge { font-size: 11px !important; letter-spacing: 3px !important; }
+    .cover-subtitle { font-size: 16px !important; }
+    .cover-tagline { font-size: 13px !important; padding: 8px 20px !important; }
+    .form-row { grid-template-columns: 1fr !important; }
+    .case-stats { grid-template-columns: 1fr !important; }
+    .contact-heading { font-size: 28px !important; }
+    .closing-title { font-size: 32px !important; }
+    .nav { display: none !important; }
+    .page-num { font-size: 10px !important; right: 20px !important; }
+    .case-card { margin-bottom: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .slide { padding: 30px 16px; }
+    .cover-title { font-size: 36px !important; }
+    .stat-number { font-size: 48px !important; }
+    .adv-grid { grid-template-columns: 1fr !important; }
   }
   /* Global bubbles on every slide */
   .slide::before {
