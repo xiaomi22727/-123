@@ -26,6 +26,49 @@
     position: relative;
     overflow: hidden;
   }
+  /* Global bubbles on every slide */
+  .slide::before {
+    content: '';
+    position: absolute;
+    width: 40px; height: 40px;
+    background: radial-gradient(circle at 35% 35%, rgba(180,230,255,0.22), rgba(0,150,255,0.08));
+    border: 1px solid rgba(180,230,255,0.25);
+    border-radius: 50%;
+    top: 15%; left: 6%;
+    animation: gBubble1 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .slide::after {
+    content: '';
+    position: absolute;
+    width: 28px; height: 28px;
+    background: radial-gradient(circle at 35% 35%, rgba(180,230,255,0.18), rgba(0,180,220,0.07));
+    border: 1px solid rgba(180,230,255,0.2);
+    border-radius: 50%;
+    bottom: 20%; right: 10%;
+    animation: gBubble2 7s ease-in-out infinite 2s;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes gBubble1 {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+    40% { transform: translateY(-18px) translateX(8px); opacity: 0.75; }
+    70% { transform: translateY(-8px) translateX(-5px); opacity: 0.6; }
+  }
+  @keyframes gBubble2 {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+    50% { transform: translateY(-14px) translateX(-7px); opacity: 0.65; }
+  }
+  /* Extra bubbles per slide — richer bubble field */
+  .extra-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(180,230,255,0.18), rgba(0,150,255,0.07));
+    border: 1px solid rgba(180,230,255,0.2);
+    pointer-events: none;
+    z-index: 0;
+  }
 
   /* ===== SLIDE 1: COVER ===== */
   .slide-cover {
@@ -495,6 +538,14 @@
   }
   .case-item:hover { transform: translateY(-4px); }
   .case-emoji { font-size: 36px; margin-bottom: 16px; }
+  .case-img-wrap {
+    width: 100%; height: 130px;
+    border-radius: 12px; overflow: hidden;
+    margin-bottom: 16px;
+    background: rgba(0,150,255,0.05);
+    border: 1px solid rgba(0,212,255,0.1);
+  }
+  .case-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
   .case-name { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
   .case-city { font-size: 13px; color: #00d4ff; margin-bottom: 16px; }
   .case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -653,6 +704,7 @@
   </div>
   <div class="car-hint">🚗</div>
   <div class="cover-badge">全国招商加盟 · 财富新风口</div>
+  <img src="logo.png" alt="车泡泡Logo" style="width:160px;height:auto;margin-bottom:16px;filter:drop-shadow(0 0 30px rgba(0,212,255,0.5))" onerror="this.style.display='none'">
   <div class="cover-title">车泡泡<br>自助洗车机</div>
   <div class="cover-subtitle">智能自助 · 泡沫清洁 · 随时随地</div>
   <div class="cover-tagline">24H 全天候运营 · 0 人工成本 · 当天安装次日盈利</div>
@@ -662,6 +714,12 @@
 
 <!-- ===== SLIDE 2: MARKET ===== -->
 <div class="slide slide-market" id="s1">
+  <div class="extra-bubble" style="width:70px;height:70px;top:5%;right:15%;animation:gBubble1 10s ease-in-out infinite 0.3s;opacity:0.25"></div>
+  <div class="extra-bubble" style="width:50px;height:50px;top:12%;right:6%;animation:gBubble1 8s ease-in-out infinite 1s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:35px;height:35px;bottom:30%;left:3%;animation:gBubble2 7s ease-in-out infinite 2s;opacity:0.3"></div>
+  <div class="extra-bubble" style="width:28px;height:28px;bottom:20%;left:15%;animation:gBubble2 6s ease-in-out infinite 3s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:16px;height:16px;top:40%;left:85%;animation:gBubble1 10s ease-in-out infinite 0.5s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:22px;height:22px;top:70%;left:50%;animation:gBubble2 8s ease-in-out infinite 1.5s;opacity:0.3"></div>
   <div class="slide-label">Market Opportunity</div>
   <div class="slide-heading">万亿级车后市场<br>自助洗车成黄金赛道</div>
   <div class="stats-grid">
@@ -686,6 +744,9 @@
 
 <!-- ===== SLIDE 3: PAIN POINTS ===== -->
 <div class="slide slide-pain" id="s2">
+  <div class="extra-bubble" style="width:40px;height:40px;top:8%;left:75%;animation:gBubble2 7s ease-in-out infinite 2s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:22px;height:22px;bottom:15%;left:25%;animation:gBubble1 9s ease-in-out infinite 1s;opacity:0.5"></div>
+  <div class="extra-bubble" style="width:14px;height:14px;top:60%;right:20%;animation:gBubble2 6s ease-in-out infinite 0.8s;opacity:0.4"></div>
   <div class="slide-label">Pain Points</div>
   <div class="slide-heading">传统洗车模式的四大顽疾</div>
   <div class="pain-grid">
@@ -723,6 +784,9 @@
 
 <!-- ===== SLIDE 4: SOLUTION ===== -->
 <div class="slide slide-solution" id="s3">
+  <div class="extra-bubble" style="width:60px;height:60px;top:10%;right:5%;animation:gBubble1 8s ease-in-out infinite 0.5s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:30px;height:30px;bottom:25%;left:5%;animation:gBubble2 7s ease-in-out infinite 2s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:18px;height:18px;top:50%;left:88%;animation:gBubble1 9s ease-in-out infinite 1.5s;opacity:0.45"></div>
   <div class="slide-label">Solution</div>
   <div class="solution-layout">
     <div class="solution-text">
@@ -748,6 +812,11 @@
         <div class="visual-sub">停车场 / 加油站 / 小区 / 商超 / 写字楼 / 景区</div>
       </div>
       <div class="visual-card">
+        <div class="visual-title">合作案例现场</div>
+        <div class="visual-sub">真实网点运营场景，现场拍摄</div>
+        <img src="p4.jpg" alt="网点实景" style="width:100%;margin-top:12px;border-radius:10px;object-fit:cover;height:120px" onerror="this.style.display='none'">
+      </div>
+      <div class="visual-card">
         <div class="visual-title">全程智能运营</div>
         <div class="visual-sub">手机后台实时查看收入、故障预警、远程开关机</div>
       </div>
@@ -758,11 +827,14 @@
 
 <!-- ===== SLIDE 5: PRODUCTS ===== -->
 <div class="slide slide-products" id="s4">
+  <div class="extra-bubble" style="width:45px;height:45px;top:15%;left:5%;animation:gBubble2 8s ease-in-out infinite 1s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:24px;height:24px;bottom:18%;right:8%;animation:gBubble1 6s ease-in-out infinite 3s;opacity:0.5"></div>
+  <div class="extra-bubble" style="width:15px;height:15px;top:65%;left:20%;animation:gBubble2 9s ease-in-out infinite 0.5s;opacity:0.4"></div>
   <div class="slide-label">Products</div>
   <div class="slide-heading">三大产品线，满足全场景需求</div>
   <div class="products-grid">
     <div class="product-card">
-      <div class="product-img"><img src="product_image.jpg" alt="车泡泡洗车机" onerror="this.style.display='none'"></div>
+      <div class="product-img"><img src="p1.jpg" alt="车泡泡洗车机 Pro" onerror="this.style.display='none'"></div>
       <div class="product-body">
         <div class="product-name">智能泡沫洗车机 Pro</div>
         <div class="product-tags">
@@ -773,7 +845,7 @@
       </div>
     </div>
     <div class="product-card">
-      <div class="product-img"><img src="product_image.jpg" alt="车泡泡洗车机" onerror="this.style.display='none'"></div>
+      <div class="product-img"><img src="p2.jpg" alt="车泡泡洗车机 Air" onerror="this.style.display='none'"></div>
       <div class="product-body">
         <div class="product-name">便携泡沫洗车机 Air</div>
         <div class="product-tags">
@@ -784,7 +856,7 @@
       </div>
     </div>
     <div class="product-card">
-      <div class="product-img"><img src="product_image.jpg" alt="车泡泡洗车机" onerror="this.style.display='none'"></div>
+      <div class="product-img"><img src="p3.jpg" alt="车泡泡全套配件" onerror="this.style.display='none'"></div>
       <div class="product-body">
         <div class="product-name">全套配件耗材包</div>
         <div class="product-tags">
@@ -800,6 +872,9 @@
 
 <!-- ===== SLIDE 6: ADVANTAGES ===== -->
 <div class="slide slide-adv" id="s5">
+  <div class="extra-bubble" style="width:55px;height:55px;top:10%;right:10%;animation:gBubble1 9s ease-in-out infinite 2s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:26px;height:26px;bottom:20%;left:12%;animation:gBubble2 7s ease-in-out infinite 1s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:16px;height:16px;top:45%;left:80%;animation:gBubble1 8s ease-in-out infinite 0.8s;opacity:0.4"></div>
   <div class="slide-label">Advantages</div>
   <div class="slide-heading">为什么选择车泡泡？</div>
   <div class="adv-grid">
@@ -817,6 +892,9 @@
 
 <!-- ===== SLIDE 7: SUPPORT ===== -->
 <div class="slide slide-support" id="s6">
+  <div class="extra-bubble" style="width:42px;height:42px;top:12%;left:8%;animation:gBubble2 7s ease-in-out infinite 0.5s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:20px;height:20px;bottom:25%;right:15%;animation:gBubble1 8s ease-in-out infinite 2s;opacity:0.45"></div>
+  <div class="extra-bubble" style="width:13px;height:13px;top:55%;left:50%;animation:gBubble2 6s ease-in-out infinite 1.2s;opacity:0.35"></div>
   <div class="slide-label">Support</div>
   <div class="slide-heading">总部六大扶持，全方位赋能加盟商</div>
   <div class="support-layout">
@@ -849,12 +927,15 @@
 
 <!-- ===== SLIDE 8: INVESTMENT ===== -->
 <div class="slide slide-invest" id="s7">
+  <div class="extra-bubble" style="width:50px;height:50px;top:8%;left:85%;animation:gBubble1 8s ease-in-out infinite 1.5s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:28px;height:28px;bottom:18%;left:6%;animation:gBubble2 9s ease-in-out infinite 0.8s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:18px;height:18px;top:40%;right:6%;animation:gBubble1 7s ease-in-out infinite 2.5s;opacity:0.45"></div>
   <div class="slide-label">Investment</div>
-  <div class="slide-heading">三种方案，灵活选择，门槛低至[X]万</div>
+  <div class="slide-heading">三种方案，灵活选择，门槛低至2万起</div>
   <div class="invest-grid">
     <div class="invest-card">
       <div class="invest-tier">方案一 · 体验店</div>
-      <div class="invest-price">[X]万<span>起</span></div>
+      <div class="invest-price">2万<span>起</span></div>
       <div class="invest-dev">含1台旗舰洗车机 + 基础耗材</div>
       <div class="invest-items">
         <div class="invest-item"><span class="invest-dot">·</span> 1台Pro系列洗车机</div>
@@ -867,7 +948,7 @@
     </div>
     <div class="invest-card hot">
       <div class="invest-tier">方案二 · 标准店</div>
-      <div class="invest-price">[X]万<span>起</span></div>
+      <div class="invest-price">6万<span>起</span></div>
       <div class="invest-dev">含2台洗车机 + 全套运营支持</div>
       <div class="invest-items">
         <div class="invest-item"><span class="invest-dot">·</span> 2台Pro洗车机</div>
@@ -881,7 +962,7 @@
     </div>
     <div class="invest-card">
       <div class="invest-tier">方案三 · 区域代理</div>
-      <div class="invest-price">面议</div>
+      <div class="invest-price">10万<span>起</span></div>
       <div class="invest-dev">区域独家授权 + 多台设备优惠</div>
       <div class="invest-items">
         <div class="invest-item"><span class="invest-dot">·</span> 指定区域独家代理权</div>
@@ -898,6 +979,9 @@
 
 <!-- ===== SLIDE 9: PROFIT ===== -->
 <div class="slide slide-profit" id="s8">
+  <div class="extra-bubble" style="width:48px;height:48px;top:10%;right:6%;animation:gBubble2 8s ease-in-out infinite 1s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:24px;height:24px;bottom:22%;left:10%;animation:gBubble1 7s ease-in-out infinite 2s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:14px;height:14px;top:50%;left:5%;animation:gBubble2 9s ease-in-out infinite 0.5s;opacity:0.45"></div>
   <div class="slide-label">Profit Model</div>
   <div class="slide-heading">多元盈利模型，让收益持续增长</div>
   <div class="profit-layout">
@@ -937,11 +1021,14 @@
 
 <!-- ===== SLIDE 10: CASE ===== -->
 <div class="slide slide-case" id="s9">
+  <div class="extra-bubble" style="width:44px;height:44px;top:12%;left:6%;animation:gBubble1 9s ease-in-out infinite 0.8s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:22px;height:22px;bottom:18%;right:10%;animation:gBubble2 7s ease-in-out infinite 1.5s;opacity:0.45"></div>
+  <div class="extra-bubble" style="width:16px;height:16px;top:38%;left:88%;animation:gBubble1 8s ease-in-out infinite 2s;opacity:0.4"></div>
   <div class="slide-label">Case Studies</div>
   <div class="slide-heading">他们已经赚到第一桶金</div>
   <div class="cases-grid">
     <div class="case-item">
-      <div class="case-emoji">🏙️</div>
+      <div class="case-img-wrap"><img src="case_new1.avif" alt="自助洗车网点" onerror="this.style.opacity='0'" class="case-img"></div>
       <div class="case-name">张先生</div>
       <div class="case-city">杭州 · 某商业停车场</div>
       <div class="case-stats">
@@ -951,7 +1038,7 @@
       <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5">"停车场24小时运营，夜间也能接单，比上班轻松多了。"</div>
     </div>
     <div class="case-item">
-      <div class="case-emoji">⛽</div>
+      <div class="case-img-wrap"><img src="case_new2.jpg" alt="自助洗车网点" onerror="this.style.opacity='0'" class="case-img"></div>
       <div class="case-name">李女士</div>
       <div class="case-city">成都 · 某加油站</div>
       <div class="case-stats">
@@ -961,7 +1048,7 @@
       <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5">"来加油顺便洗车，顾客黏性明显提升，加油量也涨了15%。"</div>
     </div>
     <div class="case-item">
-      <div class="case-emoji">🏡</div>
+      <div class="case-img-wrap"><img src="case_new3.jpg" alt="自助洗车网点" onerror="this.style.opacity='0'" class="case-img"></div>
       <div class="case-name">王先生</div>
       <div class="case-city">武汉 · 某居民小区</div>
       <div class="case-stats">
@@ -976,6 +1063,9 @@
 
 <!-- ===== SLIDE 11: CONTACT ===== -->
 <div class="slide slide-contact" id="s10">
+  <div class="extra-bubble" style="width:46px;height:46px;top:10%;left:5%;animation:gBubble2 8s ease-in-out infinite 1s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:26px;height:26px;bottom:20%;right:8%;animation:gBubble1 7s ease-in-out infinite 2s;opacity:0.4"></div>
+  <div class="extra-bubble" style="width:15px;height:15px;top:50%;left:50%;animation:gBubble2 9s ease-in-out infinite 0.5s;opacity:0.4"></div>
   <div class="slide-label">Contact Us</div>
   <div class="contact-layout">
     <div class="contact-info">
@@ -994,15 +1084,15 @@
         <div class="contact-item">
           <div class="contact-icon">📍</div>
           <div>
-            <div style="font-size:18px;font-weight:700;margin-bottom:2px">总部地址</div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.5)">[请填写公司地址]</div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:2px">广东东莞</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.5)">总部地址</div>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">🌐</div>
           <div>
-            <div style="font-size:18px;font-weight:700;margin-bottom:2px">官方网站</div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.5)">[请填写网址]</div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:2px">www.chepaopao.net</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.5)">官方网站</div>
           </div>
         </div>
       </div>
@@ -1035,10 +1125,16 @@
 
 <!-- ===== SLIDE 12: CLOSING ===== -->
 <div class="slide slide-closing" id="s11">
+  <div class="extra-bubble" style="width:60px;height:60px;top:8%;left:10%;animation:gBubble1 8s ease-in-out infinite 0.5s;opacity:0.3"></div>
+  <div class="extra-bubble" style="width:32px;height:32px;bottom:20%;right:10%;animation:gBubble2 9s ease-in-out infinite 1.5s;opacity:0.35"></div>
+  <div class="extra-bubble" style="width:18px;height:18px;top:40%;left:80%;animation:gBubble1 7s ease-in-out infinite 2s;opacity:0.4"></div>
   <div class="closing-title">车泡泡，洗净你的爱车<br>更洗净你的创业焦虑</div>
   <div class="closing-sub">万亿车后市场 · 低门槛入场 · 全流程扶持<br>期待与您携手，共创财富</div>
   <a href="javascript:void(0)" class="closing-cta">立即拨打财富热线</a>
-  <div class="closing-footer">车泡泡 · CHEPOPAOPAO · 全国招商加盟热线：186-1728-7889</div>
+  <div class="closing-footer">
+    <img src="logo.png" alt="" style="height:24px;vertical-align:middle;margin-right:10px;opacity:0.5" onerror="this.style.display='none'">
+    车泡泡 · CHEPOPAOPAO · 全国招商加盟热线：186-1728-7889 · 广东东莞 · www.chepaopao.net
+  </div>
   <div class="page-num">12 / 12</div>
 </div>
 
