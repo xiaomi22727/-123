@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>车泡泡自助洗车机 — 全国招商加盟</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: #0a0a14;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* ===== SLIDE WRAPPER ===== */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===== SLIDE 1: COVER ===== */
+  .slide-cover {
+    background: #06090f;
+    overflow: hidden;
+  }
+  /* Atmospheric background layers */
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .cover-bg::before {
+    content: '';
+    position: absolute;
+    top: -30%; left: -20%;
+    width: 80%; height: 160%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(0,90,220,0.35) 0%, rgba(0,40,120,0.1) 40%, transparent 70%);
+  }
+  .cover-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -40%; right: -20%;
+    width: 70%; height: 140%;
+    background: radial-gradient(ellipse at 70% 60%, rgba(0,180,130,0.2) 0%, transparent 60%);
+  }
+  /* Glowing blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.6;
+  }
+  .blob-1 { width: 500px; height: 500px; top: -150px; right: -100px; background: radial-gradient(circle, rgba(0,140,255,0.5), rgba(0,60,180,0.2), transparent); }
+  .blob-2 { width: 350px; height: 350px; bottom: -80px; left: 5%; background: radial-gradient(circle, rgba(0,200,150,0.35), rgba(0,100,80,0.1), transparent); }
+  .blob-3 { width: 200px; height: 200px; top: 20%; left: 0; background: radial-gradient(circle, rgba(100,0,220,0.25), transparent); }
+  /* Decorative rings */
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0,212,255,0.1);
+    animation: ringPulse 6s ease-in-out infinite;
+  }
+  .ring-1 { width: 200px; height: 200px; top: 10%; right: 12%; animation-delay: 0s; }
+  .ring-2 { width: 140px; height: 140px; top: 15%; right: 15%; animation-delay: 1s; }
+  .ring-3 { width: 300px; height: 300px; bottom: 10%; left: 5%; animation-delay: 2s; }
+  .ring-4 { width: 80px; height: 80px; bottom: 25%; left: 15%; animation-delay: 0.5s; }
+  @keyframes ringPulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+  }
+  /* Bubbles */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.12), rgba(0,150,255,0.05));
+    border: 1px solid rgba(255,255,255,0.08);
+    animation: bubbleFloat 7s ease-in-out infinite;
+  }
+  .b-1 { width: 70px; height: 70px; top: 8%; left: 20%; animation-duration: 8s; }
+  .b-2 { width: 45px; height: 45px; top: 40%; left: 6%; animation-duration: 6s; animation-delay: 2s; }
+  .b-3 { width: 55px; height: 55px; bottom: 28%; left: 10%; animation-duration: 9s; animation-delay: 1s; }
+  .b-4 { width: 30px; height: 30px; top: 25%; right: 28%; animation-duration: 5s; animation-delay: 3s; }
+  .b-5 { width: 48px; height: 48px; bottom: 18%; right: 12%; animation-duration: 7s; animation-delay: 1.5s; }
+  .b-6 { width: 22px; height: 22px; top: 55%; right: 32%; animation-duration: 6s; animation-delay: 2.5s; }
+  .b-7 { width: 36px; height: 36px; bottom: 38%; right: 8%; animation-duration: 8s; animation-delay: 0.8s; }
+  .b-8 { width: 18px; height: 18px; top: 70%; left: 25%; animation-duration: 5s; animation-delay: 3.5s; }
+  /* Water drops */
+  .drop {
+    position: absolute;
+    width: 10px; height: 14px;
+    background: rgba(0,180,220,0.18);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: rotate(45deg);
+    animation: dropFall 5s ease-in-out infinite;
+  }
+  .d-1 { top: 15%; left: 12%; animation-delay: 0s; }
+  .d-2 { top: 65%; right: 18%; animation-delay: 1.8s; }
+  .d-3 { bottom: 20%; right: 38%; animation-delay: 0.9s; }
+  @keyframes bubbleFloat {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+    33% { transform: translateY(-15px) translateX(6px); opacity: 0.7; }
+    66% { transform: translateY(-7px) translateX(-4px); opacity: 0.6; }
+  }
+  @keyframes dropFall {
+    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.3; }
+    50% { transform: rotate(45deg) translateY(-18px); opacity: 0.6; }
+  }
+  /* Subtle grid */
+  .cover-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+    pointer-events: none;
+  }
+  /* Car shadow hint */
+  .car-hint {
+    position: absolute;
+    bottom: 5%; right: 2%;
+    font-size: 120px;
+    opacity: 0.06;
+    filter: blur(2px);
+  }
+  /* Cover text layers */
+  .cover-badge {
+    position: relative;
+    z-index: 5;
+    font-size: 13px;
+    letter-spacing: 8px;
+    color: #00d4ff;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    text-shadow: 0 0 30px rgba(0,212,255,0.6);
+  }
+  .cover-title {
+    position: relative;
+    z-index: 5;
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 1.08;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 15%, #00d4ff 50%, #ffffff 85%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleShine 5s ease-in-out infinite;
+  }
+  @keyframes titleShine {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+  .cover-subtitle {
+    position: relative;
+    z-index: 5;
+    font-size: 26px;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 300;
+    letter-spacing: 4px;
+  }
+  .cover-tagline {
+    position: relative;
+    z-index: 5;
+    display: inline-block;
+    font-size: 17px;
+    color: #00d4ff;
+    border: 1px solid rgba(0,212,255,0.3);
+    padding: 10px 36px;
+    border-radius: 50px;
+    letter-spacing: 3px;
+    background: rgba(0,212,255,0.05);
+    backdrop-filter: blur(8px);
+    text-shadow: 0 0 20px rgba(0,212,255,0.4);
+  }
+  .cover-bottom {
+    position: absolute;
+    bottom: 50px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.18);
+    letter-spacing: 3px;
+    z-index: 5;
+  }
+
+  /* ===== SLIDE 2: MARKET ===== */
+  .slide-market {
+    background: linear-gradient(180deg, #07091a 0%, #0d1b3a 100%);
+  }
+  .slide-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #00d4ff;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+  .slide-heading {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 60px;
+    line-height: 1.2;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1000px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,212,255,0.3);
+  }
+  .stat-number {
+    font-size: 64px;
+    font-weight: 900;
+    color: #00d4ff;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat-unit { font-size: 24px; font-weight: 300; }
+  .stat-label { font-size: 16px; color: rgba(255,255,255,0.5); margin-top: 8px; }
+  .stat-note { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 16px; line-height: 1.5; }
+
+  /* ===== SLIDE 3: PAIN POINTS ===== */
+  .slide-pain { background: linear-gradient(180deg, #0a0a14 0%, #1a0a1a 100%); }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+  }
+  .pain-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 36px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .pain-card:hover { border-color: rgba(255,80,80,0.3); }
+  .pain-icon {
+    width: 52px; height: 52px;
+    background: rgba(255,60,60,0.1);
+    border: 1px solid rgba(255,60,60,0.2);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .pain-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .pain-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ===== SLIDE 4: SOLUTION ===== */
+  .slide-solution {
+    background: linear-gradient(135deg, #071a0f 0%, #0a2418 50%, #061a0d 100%);
+  }
+  .solution-layout {
+    display: flex; gap: 60px; align-items: center;
+    max-width: 1100px; width: 100%;
+  }
+  .solution-text { flex: 1; }
+  .solution-heading { font-size: 44px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+  .solution-desc { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 40px; }
+  .solution-features { display: flex; flex-direction: column; gap: 16px; }
+  .sol-feature { display: flex; gap: 14px; align-items: center; font-size: 15px; color: rgba(255,255,255,0.8); }
+  .sol-dot { width: 8px; height: 8px; background: #00e5a0; border-radius: 50%; flex-shrink: 0; }
+  .solution-visual { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+  .visual-card {
+    background: rgba(0,229,160,0.06);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 16px; padding: 28px;
+  }
+  .visual-title { font-size: 16px; font-weight: 700; color: #00e5a0; margin-bottom: 6px; }
+  .visual-sub { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* ===== SLIDE 5: PRODUCTS ===== */
+  .slide-products { background: linear-gradient(180deg, #07091a 0%, #0d1428 100%); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1100px; width: 100%;
+  }
+  .product-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .product-card:hover { transform: translateY(-6px); border-color: rgba(0,212,255,0.3); }
+  .product-img {
+    height: 180px;
+    background: linear-gradient(135deg, rgba(0,150,255,0.08), rgba(0,100,200,0.03));
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; }
+  .product-body { padding: 28px; }
+  .product-name { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .product-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .product-tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px;
+    background: rgba(0,212,255,0.08); color: #00d4ff;
+    border: 1px solid rgba(0,212,255,0.15);
+  }
+  .product-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ===== SLIDE 6: ADVANTAGES ===== */
+  .slide-adv { background: linear-gradient(135deg, #0a0a1a 0%, #0d1b3a 100%); }
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1100px; width: 100%;
+  }
+  .adv-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .adv-card:hover { transform: translateY(-4px); }
+  .adv-icon {
+    width: 60px; height: 60px; margin: 0 auto 20px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,150,255,0.05));
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .adv-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .adv-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ===== SLIDE 7: SUPPORT ===== */
+  .slide-support { background: linear-gradient(180deg, #070c1a 0%, #0a1025 100%); }
+  .support-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1100px; width: 100%;
+  }
+  .support-col h3 {
+    font-size: 20px; font-weight: 700; margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .support-list { display: flex; flex-direction: column; gap: 14px; }
+  .support-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5;
+  }
+  .support-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0; color: #00e5a0; margin-top: 1px;
+  }
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(0,212,255,0.3), rgba(0,229,160,0.3));
+  }
+  .timeline-item { display: flex; gap: 20px; align-items: flex-start; padding: 0 0 20px 0; position: relative; }
+  .timeline-dot {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #0d1b3a; border: 2px solid #00d4ff;
+    flex-shrink: 0; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #00d4ff;
+  }
+  .timeline-content { font-size: 14px; color: rgba(255,255,255,0.7); padding-top: 2px; }
+  .timeline-title { font-weight: 700; color: #fff; margin-bottom: 2px; font-size: 15px; }
+
+  /* ===== SLIDE 8: INVESTMENT ===== */
+  .slide-invest { background: linear-gradient(135deg, #0a0a14 0%, #1a1028 100%); }
+  .invest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1000px; width: 100%;
+  }
+  .invest-card {
+    border-radius: 24px; padding: 40px 32px;
+    text-align: center; position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+  }
+  .invest-card.hot {
+    border-color: rgba(0,212,255,0.3);
+    background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(0,100,200,0.03));
+  }
+  .invest-card.hot::before {
+    content: '热门方案';
+    position: absolute; top: 20px; right: -28px;
+    background: linear-gradient(135deg, #00d4ff, #0077ff);
+    font-size: 12px; padding: 4px 36px;
+    transform: rotate(45deg); letter-spacing: 1px;
+  }
+  .invest-tier { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 16px; letter-spacing: 2px; }
+  .invest-price { font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .invest-price span { font-size: 18px; font-weight: 400; }
+  .invest-dev { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .invest-items {
+    display: flex; flex-direction: column; gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px; text-align: left;
+  }
+  .invest-item { display: flex; gap: 10px; align-items: center; font-size: 14px; color: rgba(255,255,255,0.65); }
+  .invest-dot { color: #00e5a0; font-size: 12px; }
+
+  /* ===== SLIDE 9: PROFIT ===== */
+  .slide-profit { background: linear-gradient(180deg, #07100a 0%, #0a1a0d 100%); }
+  .profit-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1100px; width: 100%;
+    align-items: center;
+  }
+  .profit-calc {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 20px; padding: 40px;
+  }
+  .calc-title { font-size: 18px; font-weight: 700; margin-bottom: 24px; color: #00e5a0; }
+  .calc-row {
+    display: flex; justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px; color: rgba(255,255,255,0.6);
+  }
+  .calc-row:last-child { border-bottom: none; }
+  .calc-row.total {
+    font-size: 20px; font-weight: 900;
+    color: #00e5a0; padding-top: 20px; margin-top: 8px;
+    border-top: 2px solid rgba(0,229,160,0.2);
+  }
+  .profit-case { display: flex; flex-direction: column; gap: 20px; }
+  .case-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 28px;
+  }
+  .case-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .case-bar {
+    height: 8px; border-radius: 4px;
+    background: rgba(255,255,255,0.06); margin-bottom: 8px;
+  }
+  .case-bar-fill {
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, #00d4ff, #00e5a0);
+  }
+  .case-num { font-size: 28px; font-weight: 900; color: #00e5a0; }
+
+  /* ===== SLIDE 10: CASE ===== */
+  .slide-case { background: linear-gradient(180deg, #07091a 0%, #0d1b3a 100%); }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1100px; width: 100%;
+  }
+  .case-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 32px;
+    transition: transform 0.3s;
+  }
+  .case-item:hover { transform: translateY(-4px); }
+  .case-emoji { font-size: 36px; margin-bottom: 16px; }
+  .case-name { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+  .case-city { font-size: 13px; color: #00d4ff; margin-bottom: 16px; }
+  .case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .case-stat {
+    background: rgba(0,212,255,0.05);
+    border: 1px solid rgba(0,212,255,0.1);
+    border-radius: 10px; padding: 14px; text-align: center;
+  }
+  .case-stat-num { font-size: 20px; font-weight: 900; color: #00d4ff; }
+  .case-stat-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  /* ===== SLIDE 11: CONTACT ===== */
+  .slide-contact { background: linear-gradient(135deg, #0a0a14 0%, #1a1a3e 50%, #0d1b4b 100%); }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1000px; width: 100%;
+    align-items: center;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+  .contact-heading { font-size: 44px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+  .contact-sub { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .contact-items { display: flex; flex-direction: column; gap: 18px; }
+  .contact-item { display: flex; gap: 16px; align-items: center; font-size: 16px; color: rgba(255,255,255,0.8); }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px; padding: 40px;
+  }
+  .form-title { font-size: 18px; font-weight: 700; margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-label { font-size: 13px; color: rgba(255,255,255,0.4); }
+  .form-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 12px 16px;
+    color: #fff; font-size: 14px; outline: none;
+    transition: border-color 0.3s;
+    font-family: inherit;
+  }
+  .form-input:focus { border-color: rgba(0,212,255,0.4); }
+  .form-input::placeholder { color: rgba(255,255,255,0.2); }
+  .form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #00d4ff, #0077ff);
+    border: none; border-radius: 12px;
+    padding: 16px;
+    font-size: 16px; font-weight: 700; color: #fff;
+    cursor: pointer; letter-spacing: 2px;
+    transition: opacity 0.3s; font-family: inherit;
+  }
+  .form-submit:hover { opacity: 0.85; }
+
+  /* ===== SLIDE 12: CLOSING ===== */
+  .slide-closing {
+    background: radial-gradient(ellipse at center, #0d1b4b 0%, #0a0a14 70%);
+  }
+  .closing-title {
+    font-size: 56px; font-weight: 900; text-align: center;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff 30%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .closing-sub {
+    font-size: 20px; color: rgba(255,255,255,0.5);
+    text-align: center; margin-bottom: 60px; line-height: 1.6;
+  }
+  .closing-cta {
+    display: inline-block; padding: 18px 60px;
+    background: linear-gradient(135deg, #00d4ff, #0077ff);
+    border-radius: 50px; font-size: 20px; font-weight: 700;
+    color: #fff; letter-spacing: 4px; text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .closing-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(0,212,255,0.3);
+  }
+  .closing-footer {
+    position: absolute; bottom: 50px;
+    font-size: 13px; color: rgba(255,255,255,0.25); letter-spacing: 1px;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed; right: 24px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 8px; z-index: 100;
+  }
+  .nav-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); cursor: pointer;
+    transition: all 0.3s;
+  }
+  .nav-dot.active { background: #00d4ff; transform: scale(1.4); }
+
+  /* ===== PAGE NUMBER ===== */
+  .page-num {
+    position: absolute; bottom: 30px; right: 60px;
+    font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-dot active" onclick="goTo(0)"></div>
+  <div class="nav-dot" onclick="goTo(1)"></div>
+  <div class="nav-dot" onclick="goTo(2)"></div>
+  <div class="nav-dot" onclick="goTo(3)"></div>
+  <div class="nav-dot" onclick="goTo(4)"></div>
+  <div class="nav-dot" onclick="goTo(5)"></div>
+  <div class="nav-dot" onclick="goTo(6)"></div>
+  <div class="nav-dot" onclick="goTo(7)"></div>
+  <div class="nav-dot" onclick="goTo(8)"></div>
+  <div class="nav-dot" onclick="goTo(9)"></div>
+  <div class="nav-dot" onclick="goTo(10)"></div>
+  <div class="nav-dot" onclick="goTo(11)"></div>
+</div>
+
+<!-- ===== SLIDE 1: COVER ===== -->
+<div class="slide slide-cover" id="s0">
+  <!-- Background layers -->
+  <div class="cover-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+    <div class="ring ring-4"></div>
+    <div class="bubble b-1"></div>
+    <div class="bubble b-2"></div>
+    <div class="bubble b-3"></div>
+    <div class="bubble b-4"></div>
+    <div class="bubble b-5"></div>
+    <div class="bubble b-6"></div>
+    <div class="bubble b-7"></div>
+    <div class="bubble b-8"></div>
+    <div class="drop d-1"></div>
+    <div class="drop d-2"></div>
+    <div class="drop d-3"></div>
+    <div class="cover-grid"></div>
+  </div>
+  <div class="car-hint">🚗</div>
+  <div class="cover-badge">全国招商加盟 · 财富新风口</div>
+  <div class="cover-title">车泡泡<br>自助洗车机</div>
+  <div class="cover-subtitle">智能自助 · 泡沫清洁 · 随时随地</div>
+  <div class="cover-tagline">24H 全天候运营 · 0 人工成本 · 当天安装次日盈利</div>
+  <div class="cover-bottom">CHEPOPAOPAO · 全国招商加盟热线：186-1728-7889</div>
+  <div class="page-num">01 / 12</div>
+</div>
+
+<!-- ===== SLIDE 2: MARKET ===== -->
+<div class="slide slide-market" id="s1">
+  <div class="slide-label">Market Opportunity</div>
+  <div class="slide-heading">万亿级车后市场<br>自助洗车成黄金赛道</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">3.4<span class="stat-unit">亿</span></div>
+      <div class="stat-label">中国汽车保有量（持续增长）</div>
+      <div class="stat-note">私家车超过3.4亿辆<br>洗车需求刚性且高频</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">600<span class="stat-unit">亿+</span></div>
+      <div class="stat-label">年洗车市场规模</div>
+      <div class="stat-note">年均洗车次数超50亿次<br>市场规模突破600亿元</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">80<span class="stat-unit">%</span></div>
+      <div class="stat-label">用户偏好自助/上门洗车</div>
+      <div class="stat-note">传统洗车店等待久、价格高<br>消费者转向自助解决方案</div>
+    </div>
+  </div>
+  <div class="page-num">02 / 12</div>
+</div>
+
+<!-- ===== SLIDE 3: PAIN POINTS ===== -->
+<div class="slide slide-pain" id="s2">
+  <div class="slide-label">Pain Points</div>
+  <div class="slide-heading">传统洗车模式的四大顽疾</div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">💸</div>
+      <div>
+        <div class="pain-title">成本高、利润薄</div>
+        <div class="pain-desc">人工、租金、水电成本持续上涨，传统洗车店月均成本超3万元，净利润不足15%。</div>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">⏰</div>
+      <div>
+        <div class="pain-title">排队久、流失高</div>
+        <div class="pain-desc">平均等待时长超40分钟，超60%车主因排队放弃洗车，客源白白流失。</div>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📍</div>
+      <div>
+        <div class="pain-title">场地受限、扩张难</div>
+        <div class="pain-desc">店面依赖核心商圈，租金高不说，开店周期长、资金回笼慢，难以快速复制。</div>
+      </div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🔄</div>
+      <div>
+        <div class="pain-title">时间固定、不灵活</div>
+        <div class="pain-desc">朝九晚九营业，无法满足早晚高峰、夜间、节假日等碎片化时段需求。</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">03 / 12</div>
+</div>
+
+<!-- ===== SLIDE 4: SOLUTION ===== -->
+<div class="slide slide-solution" id="s3">
+  <div class="slide-label">Solution</div>
+  <div class="solution-layout">
+    <div class="solution-text">
+      <div class="solution-heading">车泡泡——<br>用智能化重构洗车体验</div>
+      <div class="solution-desc">
+        车泡泡自助洗车机以"高压泡沫 + 智能控制 + 低成本部署"为核心，让洗车像用洗衣机一样简单——投币/扫码即可使用，5分钟完成精洗，零人工值守，24小时营业。
+      </div>
+      <div class="solution-features">
+        <div class="sol-feature"><div class="sol-dot"></div>5分钟快速精洗，即停即洗</div>
+        <div class="sol-feature"><div class="sol-dot"></div>高压泡沫去污，不伤车漆</div>
+        <div class="sol-feature"><div class="sol-dot"></div>扫码/投币/刷卡多方式支付</div>
+        <div class="sol-feature"><div class="sol-dot"></div>零人工值守，24小时运营</div>
+        <div class="sol-feature"><div class="sol-dot"></div>功耗低至0.5度电/次，节能环保</div>
+      </div>
+    </div>
+    <div class="solution-visual">
+      <div class="visual-card">
+        <div class="visual-title">一台机器 ≈ 一家洗车店</div>
+        <div class="visual-sub">占地仅3㎡，无需建店装修，插电即用</div>
+      </div>
+      <div class="visual-card">
+        <div class="visual-title">多种应用场景</div>
+        <div class="visual-sub">停车场 / 加油站 / 小区 / 商超 / 写字楼 / 景区</div>
+      </div>
+      <div class="visual-card">
+        <div class="visual-title">全程智能运营</div>
+        <div class="visual-sub">手机后台实时查看收入、故障预警、远程开关机</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">04 / 12</div>
+</div>
+
+<!-- ===== SLIDE 5: PRODUCTS ===== -->
+<div class="slide slide-products" id="s4">
+  <div class="slide-label">Products</div>
+  <div class="slide-heading">三大产品线，满足全场景需求</div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img"><img src="product_image.jpg" alt="车泡泡洗车机" onerror="this.style.display='none'"></div>
+      <div class="product-body">
+        <div class="product-name">智能泡沫洗车机 Pro</div>
+        <div class="product-tags">
+          <span class="product-tag">商用旗舰</span>
+          <span class="product-tag">适合停车场/加油站</span>
+        </div>
+        <div class="product-desc">高压泡沫+清水双模式，支持扫码/投币/刷卡，单次洗车耗水仅15L，功耗0.5度电，适合人流量大的公共场所。</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><img src="product_image.jpg" alt="车泡泡洗车机" onerror="this.style.display='none'"></div>
+      <div class="product-body">
+        <div class="product-name">便携泡沫洗车机 Air</div>
+        <div class="product-tags">
+          <span class="product-tag">家用/商铺</span>
+          <span class="product-tag">轻量级部署</span>
+        </div>
+        <div class="product-desc">小巧轻便，接12V/220V电源即可使用，适合小区物业、私家车主、4S店展厅，单次成本低至3毛钱。</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><img src="product_image.jpg" alt="车泡泡洗车机" onerror="this.style.display='none'"></div>
+      <div class="product-body">
+        <div class="product-name">全套配件耗材包</div>
+        <div class="product-tags">
+          <span class="product-tag">耗材供应</span>
+          <span class="product-tag">持续盈利</span>
+        </div>
+        <div class="product-desc">洗车液、泡沫液、车蜡、擦车布等耗材包持续供货，加盟商享耗材返利，轻松构建"设备+耗材"双利润模式。</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">05 / 12</div>
+</div>
+
+<!-- ===== SLIDE 6: ADVANTAGES ===== -->
+<div class="slide slide-adv" id="s5">
+  <div class="slide-label">Advantages</div>
+  <div class="slide-heading">为什么选择车泡泡？</div>
+  <div class="adv-grid">
+    <div class="adv-card"><div class="adv-icon">🏭</div><div class="adv-title">源头厂家</div><div class="adv-desc">自主研发生产，非贴牌代工，品质全流程可控，成本优势明显</div></div>
+    <div class="adv-card"><div class="adv-icon">🔒</div><div class="adv-title">区域保护</div><div class="adv-desc">签约即锁定区域代理名额，500米内不再发展第二家代理商</div></div>
+    <div class="adv-card"><div class="adv-icon">📲</div><div class="adv-title">智慧物联</div><div class="adv-desc">4G远程监控+手机后台，随时查看收入、故障，运营数据一目了然</div></div>
+    <div class="adv-card"><div class="adv-icon">🛡️</div><div class="adv-title">全程扶持</div><div class="adv-desc">选址评估→装修方案→设备安装→运营培训→营销推广→驻点帮扶</div></div>
+    <div class="adv-card"><div class="adv-icon">🔄</div><div class="adv-title">持续供货</div><div class="adv-desc">设备核心部件3年质保，耗材体系稳定供货，无断货后顾之忧</div></div>
+    <div class="adv-card"><div class="adv-icon">📈</div><div class="adv-title">多元盈利</div><div class="adv-desc">洗车收入+耗材销售+广告分成+异业合作，多通道变现</div></div>
+    <div class="adv-card"><div class="adv-icon">⚡</div><div class="adv-title">极速回本</div><div class="adv-desc">行业平均回本周期3~6个月，优于大多数实体创业项目</div></div>
+    <div class="adv-card"><div class="adv-icon">🤝</div><div class="adv-title">无忧退出</div><div class="adv-desc">合同期内设备残值回购政策，降低投资风险，加盟更安心</div></div>
+  </div>
+  <div class="page-num">06 / 12</div>
+</div>
+
+<!-- ===== SLIDE 7: SUPPORT ===== -->
+<div class="slide slide-support" id="s6">
+  <div class="slide-label">Support</div>
+  <div class="slide-heading">总部六大扶持，全方位赋能加盟商</div>
+  <div class="support-layout">
+    <div class="support-col">
+      <h3>全程运营支持</h3>
+      <div class="support-list">
+        <div class="support-item"><div class="support-check">✓</div>选址评估报告：人流量+竞争分析+盈亏测算</div>
+        <div class="support-item"><div class="support-check">✓</div>门店装修方案：统一VI视觉，含效果图+施工图</div>
+        <div class="support-item"><div class="support-check">✓</div>设备安装调试：工程师上门，2天内完成交付</div>
+        <div class="support-item"><div class="support-check">✓</div>运营培训：线上课程+线下驻店，手把手带你跑通</div>
+        <div class="support-item"><div class="support-check">✓</div>营销物料：海报/易拉宝/短视频模板，全套提供</div>
+        <div class="support-item"><div class="support-check">✓</div>客服话术：标准应答模板，提升转化率</div>
+        <div class="support-item"><div class="support-check">✓</div>终身技术支持：微信群+电话响应≤4小时</div>
+      </div>
+    </div>
+    <div class="support-col">
+      <h3>加盟合作流程</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-dot">1</div><div class="timeline-content"><div class="timeline-title">联系咨询</div>电话/微信沟通，了解项目详情</div></div>
+        <div class="timeline-item"><div class="timeline-dot">2</div><div class="timeline-content"><div class="timeline-title">实地考察</div>来厂参观，试机体验，签订合作意向</div></div>
+        <div class="timeline-item"><div class="timeline-dot">3</div><div class="timeline-content"><div class="timeline-title">签约缴费</div>签订正式合同，缴纳加盟费用</div></div>
+        <div class="timeline-item"><div class="timeline-dot">4</div><div class="timeline-content"><div class="timeline-title">选址装修</div>总部派人协助选址，提供装修方案</div></div>
+        <div class="timeline-item"><div class="timeline-dot">5</div><div class="timeline-content"><div class="timeline-title">设备发货</div>工厂直发，专业工程师上门安装调试</div></div>
+        <div class="timeline-item"><div class="timeline-dot">6</div><div class="timeline-content"><div class="timeline-title">开业运营</div>总部培训+营销支持，正式开门迎客</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">07 / 12</div>
+</div>
+
+<!-- ===== SLIDE 8: INVESTMENT ===== -->
+<div class="slide slide-invest" id="s7">
+  <div class="slide-label">Investment</div>
+  <div class="slide-heading">三种方案，灵活选择，门槛低至[X]万</div>
+  <div class="invest-grid">
+    <div class="invest-card">
+      <div class="invest-tier">方案一 · 体验店</div>
+      <div class="invest-price">[X]万<span>起</span></div>
+      <div class="invest-dev">含1台旗舰洗车机 + 基础耗材</div>
+      <div class="invest-items">
+        <div class="invest-item"><span class="invest-dot">·</span> 1台Pro系列洗车机</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 选址指导服务1次</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 线上运营培训（1人）</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 营销物料全套</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 耗材首批发货</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 区域保护（签约为准）</div>
+      </div>
+    </div>
+    <div class="invest-card hot">
+      <div class="invest-tier">方案二 · 标准店</div>
+      <div class="invest-price">[X]万<span>起</span></div>
+      <div class="invest-dev">含2台洗车机 + 全套运营支持</div>
+      <div class="invest-items">
+        <div class="invest-item"><span class="invest-dot">·</span> 2台Pro洗车机</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 工程师上门安装调试</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 线下驻店培训（3人）</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 全套VIS装修方案</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 开业营销方案（含线上推广）</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 区域独家保护</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 6个月运营督导</div>
+      </div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-tier">方案三 · 区域代理</div>
+      <div class="invest-price">面议</div>
+      <div class="invest-dev">区域独家授权 + 多台设备优惠</div>
+      <div class="invest-items">
+        <div class="invest-item"><span class="invest-dot">·</span> 指定区域独家代理权</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 设备享受代理折扣价</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 团队培训（不限制人数）</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 发展下线加盟商权限</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 总部品牌授权使用</div>
+        <div class="invest-item"><span class="invest-dot">·</span> 年度返利政策</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">08 / 12</div>
+</div>
+
+<!-- ===== SLIDE 9: PROFIT ===== -->
+<div class="slide slide-profit" id="s8">
+  <div class="slide-label">Profit Model</div>
+  <div class="slide-heading">多元盈利模型，让收益持续增长</div>
+  <div class="profit-layout">
+    <div class="profit-calc">
+      <div class="calc-title">单台洗车机月收益测算（参考）</div>
+      <div class="calc-row"><span>日均洗车次数</span><span>30次/天</span></div>
+      <div class="calc-row"><span>单次收费</span><span>15~25元</span></div>
+      <div class="calc-row"><span>月毛收入（30天）</span><span>13,500~22,500元</span></div>
+      <div class="calc-row"><span>耗材成本（月）</span><span>约 800 元</span></div>
+      <div class="calc-row"><span>水电费（月）</span><span>约 300 元</span></div>
+      <div class="calc-row"><span>设备折旧（36个月）</span><span>约 500 元/月</span></div>
+      <div class="calc-row total"><span>月净利润</span><span>11,900~21,000元</span></div>
+    </div>
+    <div class="profit-case">
+      <div class="case-card">
+        <div class="case-title">耗材供应链 · 持续利润</div>
+        <div class="case-num">毛利率 40%+</div>
+        <div class="case-bar"><div class="case-bar-fill" style="width:40%"></div></div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5)">洗车液/泡沫/车蜡/擦车布等，加盟商享受批发价，持续复购</div>
+      </div>
+      <div class="case-card">
+        <div class="case-title">广告分成 · 被动收入</div>
+        <div class="case-num">屏幕广告+二维码变现</div>
+        <div class="case-bar"><div class="case-bar-fill" style="width:30%"></div></div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5)">机身屏幕广告、扫码关注等增值业务，长期被动收入</div>
+      </div>
+      <div class="case-card">
+        <div class="case-title">异业合作 · 跨界变现</div>
+        <div class="case-num">加油站/4S店/物业分成</div>
+        <div class="case-bar"><div class="case-bar-fill" style="width:55%"></div></div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5)">与加油站、4S店、停车场、物业公司合作，流水抽佣模式</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">09 / 12</div>
+</div>
+
+<!-- ===== SLIDE 10: CASE ===== -->
+<div class="slide slide-case" id="s9">
+  <div class="slide-label">Case Studies</div>
+  <div class="slide-heading">他们已经赚到第一桶金</div>
+  <div class="cases-grid">
+    <div class="case-item">
+      <div class="case-emoji">🏙️</div>
+      <div class="case-name">张先生</div>
+      <div class="case-city">杭州 · 某商业停车场</div>
+      <div class="case-stats">
+        <div class="case-stat"><div class="case-stat-num">3台</div><div class="case-stat-label">设备数量</div></div>
+        <div class="case-stat"><div class="case-stat-num">¥3.2万</div><div class="case-stat-label">月净利润</div></div>
+      </div>
+      <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5">"停车场24小时运营，夜间也能接单，比上班轻松多了。"</div>
+    </div>
+    <div class="case-item">
+      <div class="case-emoji">⛽</div>
+      <div class="case-name">李女士</div>
+      <div class="case-city">成都 · 某加油站</div>
+      <div class="case-stats">
+        <div class="case-stat"><div class="case-stat-num">2台</div><div class="case-stat-label">设备数量</div></div>
+        <div class="case-stat"><div class="case-stat-num">¥1.8万</div><div class="case-stat-label">月净利润</div></div>
+      </div>
+      <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5">"来加油顺便洗车，顾客黏性明显提升，加油量也涨了15%。"</div>
+    </div>
+    <div class="case-item">
+      <div class="case-emoji">🏡</div>
+      <div class="case-name">王先生</div>
+      <div class="case-city">武汉 · 某居民小区</div>
+      <div class="case-stats">
+        <div class="case-stat"><div class="case-stat-num">1台</div><div class="case-stat-label">设备数量</div></div>
+        <div class="case-stat"><div class="case-stat-num">¥1.1万</div><div class="case-stat-label">月净利润</div></div>
+      </div>
+      <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5">"小区有1600户业主，刚需强、回本快，4个月就回本了。"</div>
+    </div>
+  </div>
+  <div class="page-num">10 / 12</div>
+</div>
+
+<!-- ===== SLIDE 11: CONTACT ===== -->
+<div class="slide slide-contact" id="s10">
+  <div class="slide-label">Contact Us</div>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="contact-heading">携手车泡泡<br>开启财富新篇章</div>
+      <div class="contact-sub">
+        无论您是想个人创业、投资副业，还是转型做区域代理，车泡泡都为您提供完整的解决方案。名额有限，先到先得！
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:2px">186-1728-7889</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.5)">招商热线（微信同号）</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:2px">总部地址</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.5)">[请填写公司地址]</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:2px">官方网站</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.5)">[请填写网址]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">立刻预约招商经理</div>
+      <div class="form-row">
+        <div class="form-field"><label class="form-label">您的姓名</label><input class="form-input" placeholder="请输入姓名"></div>
+        <div class="form-field"><label class="form-label">联系电话</label><input class="form-input" placeholder="请输入手机号"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label class="form-label">意向城市</label><input class="form-input" placeholder="如：杭州"></div>
+        <div class="form-field"><label class="form-label">投资预算</label>
+          <select class="form-input">
+            <option value="">请选择</option>
+            <option>5万以下</option>
+            <option>5~10万</option>
+            <option>10~20万</option>
+            <option>20万以上</option>
+            <option>区域代理</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field"><label class="form-label">留言（选填）</label><input class="form-input" placeholder="简单描述一下您的意向或疑问"></div>
+      <button class="form-submit">提交意向 · 等待联系</button>
+    </div>
+  </div>
+  <div class="page-num">11 / 12</div>
+</div>
+
+<!-- ===== SLIDE 12: CLOSING ===== -->
+<div class="slide slide-closing" id="s11">
+  <div class="closing-title">车泡泡，洗净你的爱车<br>更洗净你的创业焦虑</div>
+  <div class="closing-sub">万亿车后市场 · 低门槛入场 · 全流程扶持<br>期待与您携手，共创财富</div>
+  <a href="javascript:void(0)" class="closing-cta">立即拨打财富热线</a>
+  <div class="closing-footer">车泡泡 · CHEPOPAOPAO · 全国招商加盟热线：186-1728-7889</div>
+  <div class="page-num">12 / 12</div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => observer.observe(s));
+  function goTo(n) { slides[n].scrollIntoView({ behavior: 'smooth' }); }
+  document.addEventListener('keydown', e => {
+    const current = Array.from(slides).findIndex(s => s.getBoundingClientRect().top >= 0);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') goTo(Math.min(current + 1, slides.length - 1));
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') goTo(Math.max(current - 1, 0));
+  });
+</script>
+</body>
+</html>
